@@ -2,4 +2,4 @@
 
 Command to execute
 
-npx smartui exec -- mvn test -D suite=sdk-playwright-java.xml
+npx smartui exec -- mvn test -D suite=sdk-playwright-local-java.xml

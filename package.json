@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@lambdatest/smartui-cli": "^4.0.17"
+  }
+}

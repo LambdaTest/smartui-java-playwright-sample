@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SmartUISDKPlaywright {
+public class SmartUISDKPlaywrightLocal {
   private Playwright playwright;
   private Browser browser;
   private Page page;

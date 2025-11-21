@@ -2,14 +2,6 @@
 
 Welcome to the SmartUI SDK sample for Playwright Java. This repository demonstrates how to integrate SmartUI visual regression testing with Playwright Java.
 
-## Prerequisites
-
-- Java 10 or higher
-- Maven 3.6 or higher
-- Node.js (for SmartUI CLI)
-- LambdaTest account credentials (for Cloud tests)
-- Chrome browser (for Local tests)
-
 ## Repository Structure
 
 ```
@@ -27,73 +19,89 @@ smartui-java-playwright-sample/
 └── smartui-web.json                                        # SmartUI config (create with npx smartui config:create)
 ```
 
-## Quick Start
+## 1. Prerequisites and Environment Setup
 
-### Local Execution
+### Prerequisites
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/LambdaTest/smartui-java-playwright-sample
-   cd smartui-java-playwright-sample
-   ```
+- Java 10 or higher
+- Maven 3.6 or higher
+- Node.js (for SmartUI CLI)
+- LambdaTest account credentials (for Cloud tests)
+- Chrome browser (for Local tests)
 
-2. **Build the project:**
-   ```bash
-   mvn clean compile
-   ```
+### Environment Setup
 
-3. **Set your Project Token:**
-   ```bash
-   export PROJECT_TOKEN='your_project_token'
-   ```
+**For Cloud:**
+```bash
+export LT_USERNAME='your_username'
+export LT_ACCESS_KEY='your_access_key'
+export PROJECT_TOKEN='your_project_token'
+```
 
-4. **Create SmartUI config:**
-   ```bash
-   npx smartui config:create smartui-web.json
-   ```
+**For Local:**
+```bash
+export PROJECT_TOKEN='your_project_token'
+```
 
-5. **Run the test:**
-   ```bash
-   npx smartui exec -- mvn test -D suite=sdk-playwright-local-java.xml
-   ```
+## 2. Initial Setup and Dependencies
 
-### Cloud Execution
+### Clone the Repository
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/LambdaTest/smartui-java-playwright-sample
-   cd smartui-java-playwright-sample
-   ```
+```bash
+git clone https://github.com/LambdaTest/smartui-java-playwright-sample
+cd smartui-java-playwright-sample
+```
 
-2. **Build the project:**
-   ```bash
-   mvn clean compile
-   ```
+### Install Dependencies
 
-3. **Set your credentials:**
-   ```bash
-   export LT_USERNAME='your_username'
-   export LT_ACCESS_KEY='your_access_key'
-   export PROJECT_TOKEN='your_project_token'
-   ```
+The repository already includes the required dependencies in `pom.xml`. Build the project to download dependencies:
 
-4. **Create SmartUI config:**
-   ```bash
-   npx smartui config:create smartui-web.json
-   ```
+```bash
+mvn clean compile
+```
 
-5. **Run the test:**
-   ```bash
-   npx smartui exec -- mvn test -D suite=sdk-playwright-cloud-java.xml
-   ```
-
-## Dependencies
-
-The project uses the following key dependencies (already configured in `pom.xml`):
-
+**Dependencies included:**
 - `com.microsoft.playwright:playwright` - Playwright Java library
 - `io.github.lambdatest:lambdatest-java-playwright-sdk` - SmartUI SDK for Playwright Java
 - `org.testng:testng` - TestNG testing framework
+
+### Create SmartUI Configuration
+
+```bash
+npx smartui config:create smartui-web.json
+```
+
+## 3. Steps to Integrate Screenshot Commands into Codebase
+
+The SmartUI screenshot function is already implemented in the repository.
+
+**Cloud Test** (`src/test/java/com/lambdatest/SmartUISDKPlaywrightCloud.java`):
+```java
+page.navigate("https://www.lambdatest.com");
+SmartUISnapshot.smartuiSnapshot(page, "screenshot");
+```
+
+**Local Test** (`src/test/java/com/lambdatest/SmartUISDKPlaywrightLocal.java`):
+```java
+page.navigate("https://www.lambdatest.com");
+SmartUISnapshot.smartuiSnapshot(page, "screenshot");
+```
+
+**Note**: The code is already configured and ready to use. You can modify the URL and screenshot name if needed.
+
+## 4. Execution and Commands
+
+### Local Execution
+
+```bash
+npx smartui exec -- mvn test -D suite=sdk-playwright-local-java.xml
+```
+
+### Cloud Execution
+
+```bash
+npx smartui exec -- mvn test -D suite=sdk-playwright-cloud-java.xml
+```
 
 ## Test Files
 

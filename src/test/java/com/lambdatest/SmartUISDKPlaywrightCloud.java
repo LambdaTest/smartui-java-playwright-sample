@@ -50,8 +50,8 @@ public class SmartUISDKPlaywrightCloud {
   @Test
   public void basicTest() throws Exception {
     System.out.println("Loading Url");
-    page.navigate("https://www.lambdatest.com/visual-regression-testing");
-    SmartUISnapshot.smartuiSnapshot(page, "SmartUI");
+    page.navigate("https://www.lambdatest.com");
+    SmartUISnapshot.smartuiSnapshot(page, "screenshot");
   }
 
   @AfterMethod

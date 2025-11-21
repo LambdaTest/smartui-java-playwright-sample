@@ -37,17 +37,22 @@ smartui-java-playwright-sample/
    cd smartui-java-playwright-sample
    ```
 
-2. **Set your Project Token:**
+2. **Build the project:**
+   ```bash
+   mvn clean compile
+   ```
+
+3. **Set your Project Token:**
    ```bash
    export PROJECT_TOKEN='your_project_token'
    ```
 
-3. **Create SmartUI config:**
+4. **Create SmartUI config:**
    ```bash
    npx smartui config:create smartui-web.json
    ```
 
-4. **Run the test:**
+5. **Run the test:**
    ```bash
    npx smartui exec -- mvn test -D suite=sdk-playwright-local-java.xml
    ```
@@ -60,19 +65,24 @@ smartui-java-playwright-sample/
    cd smartui-java-playwright-sample
    ```
 
-2. **Set your credentials:**
+2. **Build the project:**
+   ```bash
+   mvn clean compile
+   ```
+
+3. **Set your credentials:**
    ```bash
    export LT_USERNAME='your_username'
    export LT_ACCESS_KEY='your_access_key'
    export PROJECT_TOKEN='your_project_token'
    ```
 
-3. **Create SmartUI config:**
+4. **Create SmartUI config:**
    ```bash
    npx smartui config:create smartui-web.json
    ```
 
-4. **Run the test:**
+5. **Run the test:**
    ```bash
    npx smartui exec -- mvn test -D suite=sdk-playwright-cloud-java.xml
    ```

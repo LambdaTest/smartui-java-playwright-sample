@@ -6,8 +6,6 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import io.github.lambdatest.SmartUISnapshot;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -50,8 +48,8 @@ public class SmartUISDKPlaywrightCloud {
   @Test
   public void basicTest() throws Exception {
     System.out.println("Loading Url");
-    page.navigate("https://www.lambdatest.com/visual-regression-testing");
-    SmartUISnapshot.smartuiSnapshot(page, "SmartUI");
+    page.navigate("https://www.lambdatest.com");
+    SmartUISnapshot.smartuiSnapshot(page, "screenshot");
   }
 
   @AfterMethod

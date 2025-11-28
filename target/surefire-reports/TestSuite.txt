@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 3.641 sec <<< FAILURE! - in TestSuite
+setup(com.lambdatest.SmartUISDKPlaywrightCloud)  Time elapsed: 3.577 sec  <<< FAILURE!
+com.microsoft.playwright.PlaywrightException: 
+Error {
+  message='Unauthorized, either Username or AccessKey is invalid.
+  name='Internal Server Error
+  stack='null
+}
+	at com.lambdatest.SmartUISDKPlaywrightCloud.setup(SmartUISDKPlaywrightCloud.java:46)
+Caused by: com.microsoft.playwright.impl.DriverException: 
+Error {
+  message='Unauthorized, either Username or AccessKey is invalid.
+  name='Internal Server Error
+  stack='null
+}
+	at com.lambdatest.SmartUISDKPlaywrightCloud.setup(SmartUISDKPlaywrightCloud.java:46)
+

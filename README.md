@@ -1,126 +1,115 @@
-# SmartUI SDK Sample for Playwright Java
+# Run SmartUI Visual Tests with Java and Playwright on TestMu AI (Formerly LambdaTest)
 
-Welcome to the SmartUI SDK sample for Playwright Java. This repository demonstrates how to integrate SmartUI visual regression testing with Playwright Java.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://search.maven.org/artifact/com.microsoft.playwright/playwright"><img src="https://img.shields.io/maven-central/v/com.microsoft.playwright/playwright.svg?style=for-the-badge&labelColor=000000" alt="Playwright version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-## Repository Structure
+## Getting Started
 
-```
-smartui-java-playwright-sample/
-├── src/
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── lambdatest/
-│                   ├── SmartUISDKPlaywrightCloud.java    # Cloud test
-│                   └── SmartUISDKPlaywrightLocal.java      # Local test
-├── sdk-playwright-cloud-java.xml                          # TestNG suite for Cloud
-├── sdk-playwright-local-java.xml                          # TestNG suite for Local
-├── pom.xml                                                 # Maven dependencies
-└── smartui-web.json                                        # SmartUI config (create with npx smartui config:create)
-```
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-## 1. Prerequisites and Environment Setup
+With TestMu AI (Formerly LambdaTest), you can run SmartUI visual regression tests with Java and Playwright on real browsers. This sample shows how to configure Java + Playwright + SmartUI to run on the TestMu AI cloud.
+
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
 ### Prerequisites
 
-- Java 10 or higher
-- Maven 3.6 or higher
-- Node.js (for SmartUI CLI)
-- LambdaTest account credentials (for Cloud tests)
-- Chrome browser (for Local tests)
+- Java JDK 11 or higher, Maven (latest stable), and Node.js (for SmartUI CLI)
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-### Environment Setup
+### Setup
 
-**For Cloud:**
-```bash
-export LT_USERNAME='your_username'
-export LT_ACCESS_KEY='your_access_key'
-export PROJECT_TOKEN='your_project_token'
-```
-
-**For Local:**
-```bash
-export PROJECT_TOKEN='your_project_token'
-```
-
-## 2. Initial Setup and Dependencies
-
-### Clone the Repository
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/smartui-java-playwright-sample
-cd smartui-java-playwright-sample
+git clone https://github.com/LambdaTest/smartui-java-playwright-sample && cd smartui-java-playwright-sample
+mvn install -DskipTests
 ```
 
-### Install Dependencies
+Set your credentials as environment variables.
 
-The repository already includes the required dependencies in `pom.xml`. Build the project to download dependencies:
+**macOS / Linux:**
 
 ```bash
-mvn clean compile
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
+export PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
 ```
 
-**Dependencies included:**
-- `com.microsoft.playwright:playwright` - Playwright Java library
-- `io.github.lambdatest:lambdatest-java-playwright-sdk` - SmartUI SDK for Playwright Java
-- `org.testng:testng` - TestNG testing framework
-
-### Create SmartUI Configuration
+**Windows:**
 
 ```bash
-npx smartui config:create smartui-web.json
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
+set PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
 ```
 
-## 3. Steps to Integrate Screenshot Commands into Codebase
+### Run tests
 
-The SmartUI screenshot function is already implemented in the repository.
+```bash
+mvn test
+```
 
-**Cloud Test** (`src/test/java/com/lambdatest/SmartUISDKPlaywrightCloud.java`):
+View results on your TestMu AI dashboard.
+
+### Local testing with TestMu AI Tunnel
+
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
+
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
+
+Add the following to your capabilities:
+
 ```java
-page.navigate("https://www.lambdatest.com");
-SmartUISnapshot.smartuiSnapshot(page, "screenshot");
+capabilities.setCapability("tunnel", true);
 ```
 
-**Local Test** (`src/test/java/com/lambdatest/SmartUISDKPlaywrightLocal.java`):
-```java
-page.navigate("https://www.lambdatest.com");
-SmartUISnapshot.smartuiSnapshot(page, "screenshot");
-```
+## Contributions
 
-**Note**: The code is already configured and ready to use. You can modify the URL and screenshot name if needed.
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Playwright version.
 
-## 4. Execution and Commands
+## TestMu AI (Formerly LambdaTest) Community
 
-### Local Execution
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-```bash
-npx smartui exec -- mvn test -D suite=sdk-playwright-local-java.xml
-```
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-### Cloud Execution
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-```bash
-npx smartui exec -- mvn test -D suite=sdk-playwright-cloud-java.xml
-```
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-## Test Files
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-### Cloud Test (`SmartUISDKPlaywrightCloud.java`)
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-- Connects to LambdaTest Cloud using CDP (Chrome DevTools Protocol)
-- Reads credentials from environment variables (`LT_USERNAME`, `LT_ACCESS_KEY`)
-- Takes screenshot with name: `screenshot`
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-### Local Test (`SmartUISDKPlaywrightLocal.java`)
+ð Find the new home for [LambdaTest](https://www.testmuai.com).
 
-- Runs Playwright locally using Chromium
-- Requires Chrome browser installed
-- Takes screenshot with name: `screenshot`
+### How LambdaTest Evolved into TestMu AI
 
-## View Results
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-After running the tests, visit your SmartUI project dashboard to view the captured screenshots and compare them with baseline builds.
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-## More Information
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-For detailed onboarding instructions, see the [SmartUI Playwright Java Onboarding Guide](https://www.lambdatest.com/support/docs/smartui-onboarding-playwright-java/).
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
